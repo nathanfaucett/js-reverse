@@ -2,6 +2,13 @@ var keys = require("keys"),
     isArrayLike = require("is_array_like");
 
 
+module.exports = reverse;
+
+
+function reverse(object) {
+    return isArrayLike(object) ? reverseArray(object) : reverseObject(Object(object));
+}
+
 function reverseArray(array) {
     var i = array.length,
         results = new Array(i),
@@ -28,7 +35,3 @@ function reverseObject(object) {
 
     return results;
 }
-
-module.exports = function reverse(object) {
-    return isArrayLike(object) ? reverseArray(object) : reverseObject(Object(object));
-};
